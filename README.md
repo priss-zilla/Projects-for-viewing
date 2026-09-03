@@ -1,4 +1,4 @@
-## NASA Space Weather Project Overview: AWSoM vs MAVEN Solar Wind Data Analysis
+# NASA Space Weather Project Overview: AWSoM vs MAVEN Solar Wind Data Analysis
 
 This project provides a complete framework for comparing solar wind simulation data against spacecraft observations, using interpolation, smoothing, dynamic time warping, and statistical analysis.
 
@@ -134,7 +134,7 @@ The approach therefore combines:
 
 `Python` · `JAX` · `NumPy` · `Neural Networks` · `Physics-Informed Machine Learning` · `ODE Solvers` · `Automatic Differentiation` · `Numerical Simulation`
 
-The work established the computational foundations for applying physics-informed machine learning to the rotor's coupled dynamics, including the JAX-based physical model, neural-network torque prediction, ODE integration, and physics-informed driving-force prediction - with the purpose to inform engineering decisions to produce the world's fastest spinning rotor.
+The work established the computational foundations for applying physics-informed machine learning to the rotor's coupled dynamics, including the JAX-based physical model, neural-network torque prediction, ODE integration, and physics-informed driving-force prediction - with the purpose of informing engineering decisions to produce the world's fastest spinning rotor.
 
 
 
