@@ -68,3 +68,73 @@ This project demonstrates advanced techniques in:
 
 The methodology can be adapted for comparing any simulation model with observational data, making it valuable for researchers in space physics, astrophysics, and data science.
 
+# Physics-Informed Machine Learning for an Ultra-Fast Spinning Rotor
+
+This project investigates the use of **Physics-Informed Neural Networks (PINNs)** to identify missing dynamics in an ultra-fast levitating rotor system designed for hypersensitive environmental detection and high-precision rotational sensing.
+
+At high rotational speeds, the rotor exhibits pronounced wobbling and a decay in rotational velocity. Experimental observations identified three rigid-body vibration modes—**θ, X, and Z**—and indicated that resonance between rotational motion and these vibrational modes can produce significant energy transfer. The underlying hypothesis is that coupling between the rotational and vibrational dynamics generates an additional driving force that is not fully captured by the existing physical model.
+
+## Physics-Informed Neural Network
+
+A conventional neural network can learn a relationship directly from data, but this approach can require large quantities of training data and may produce predictions that violate known physical laws.
+
+A **Physics-Informed Neural Network (PINN)** addresses this by embedding the governing equations of the physical system directly into the learning process. Instead of treating the neural network as a purely data-driven black box, the model is constrained by the known dynamics while learning the components that are unknown.
+
+For this system, the physical dynamics can be separated conceptually into two components:
+
+**Known physics**
+
+The established equations of motion describe the known rotational and vibrational dynamics of the rotor.
+
+**Unknown physics**
+
+A neural network represents the missing driving force associated with coupling between the rotational and vibrational modes. The network therefore acts as a data-driven representation of physics that has not yet been explicitly formulated.
+
+The training objective combines the neural-network prediction with the physical constraints imposed by the governing differential equations. This allows the model to search for a driving force that both fits the available system behaviour and remains consistent with the underlying physics.
+
+### From Simulation to PINN
+
+The computational development proceeded progressively:
+
+1. **Physical model → JAX**
+   The existing NumPy implementation of the equations of motion and numerical solver was converted to **JAX**, enabling automatic differentiation and compatibility with high-performance computing workflows.
+
+2. **Neural network → torque prediction**
+   Neural networks were first developed on simulated data to learn the relationship between system variables and rotor torque. The model was progressively expanded from a single input variable to multiple physical inputs such as angular position and rotational frequency.
+
+3. **Neural network + ODE solver**
+   The learned component was integrated with the equations of motion and numerical ODE solver, creating a hybrid computational system in which neural-network predictions influence the simulated physical dynamics. The JAX implementation was validated against the original numerical implementation.
+
+4. **Physics-informed prediction**
+   The neural network was then incorporated into a physics-informed framework to predict the unknown driving force responsible for coupling between the rotor's vibration modes and rotational motion. The resulting model uses ODE solutions as training information while enforcing the governing physical equations as constraints.
+
+5. **Towards the full coupled system**
+   The intended next stage was to reintroduce the rotational equation and allow the driving force to depend on both angular and vibrational coordinates, providing a more realistic representation of the coupled system.
+
+6. **Experimental validation**
+   The final stage of the proposed workflow was to apply the model to experimental measurements containing quantities such as mode position, mode velocity, angular position, and angular velocity, and compare the model's predictions against observed rotor behaviour.
+
+## Engineering Significance
+
+The broader goal is to provide a computational method for discovering **subtle or previously unmodelled physical effects** in complex experimental systems.
+
+For the rotor, identifying the missing driving force could help explain the onset of high-speed wobbling and the associated transfer of energy between rotational and vibrational modes. This creates a pathway from experimental observations → computational modelling → identification of missing physics → improved understanding of rotor dynamics.
+
+The approach therefore combines:
+
+`First-Principles Physics`
+→ `Numerical ODE Simulation`
+→ `JAX High-Performance Computing`
+→ `Neural Network`
+→ `Physics-Informed Learning`
+→ `Missing-Physics Identification`
+→ `Experimental Validation`
+
+## Technologies
+
+`Python` · `JAX` · `NumPy` · `Neural Networks` · `Physics-Informed Machine Learning` · `ODE Solvers` · `Automatic Differentiation` · `Numerical Simulation`
+
+The work established the computational foundations for applying physics-informed machine learning to the rotor's coupled dynamics, including the JAX-based physical model, neural-network torque prediction, ODE integration, and physics-informed driving-force prediction - with the purpose to inform engineering decisions to produce the world's fastest spinning rotor.
+
+
+
