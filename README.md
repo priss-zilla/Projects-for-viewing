@@ -1,4 +1,4 @@
-## Project Overview: AWSoM vs MAVEN Solar Wind Data Analysis
+## NASA Space Weather Project Overview: AWSoM vs MAVEN Solar Wind Data Analysis
 
 This project provides a complete framework for comparing solar wind simulation data against spacecraft observations, using interpolation, smoothing, dynamic time warping, and statistical analysis.
 
@@ -67,3 +67,4 @@ This project demonstrates advanced techniques in:
 4. **Model Validation**: Quantitative assessment of simulation accuracy
 
 The methodology can be adapted for comparing any simulation model with observational data, making it valuable for researchers in space physics, astrophysics, and data science.
+
