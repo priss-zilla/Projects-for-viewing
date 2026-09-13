@@ -1,3 +1,5 @@
+## This script contains code snippets for the PINN developed to study and configure the missing physics of the leviating rotor. ##
+
 # Define the system of ODEs
 def equation_of_motion(y, t):
     theta, theta_dot, x, x_dot = y
