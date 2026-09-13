@@ -55,7 +55,7 @@ state = train_state.TrainState.create(
     tx=optimizer
 )
 
-# Modified train_step to accept t_eval and use batch initial conditions
+# Modified train_step to accept t_eval and use initial conditions of training batches
 @jax.jit
 def train_step(state, batch, t_eval):
     def loss_fn(params):
