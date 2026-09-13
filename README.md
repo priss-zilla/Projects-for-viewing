@@ -128,11 +128,11 @@ First-Principles Physics
 → `Neural Network`
 → `Physics-Informed Learning`
 → `Missing-Physics Identification`
-→ `Experimental Validation`
+→ `Experimental Validation
 
 ## Technologies
 
-`Python` · `JAX` · `Flax` · `NumPy` · `Neural Networks` · `Physics-Informed Machine Learning` · `ODE Solvers` · `Automatic Differentiation` · `Numerical Simulation`
+Python` · `JAX` · `Flax` · `NumPy` · `Neural Networks` · `Physics-Informed Machine Learning` · `ODE Solvers` · `Automatic Differentiation` · `Numerical Simulation
 
 The work established the computational foundations for applying physics-informed machine learning to the rotor's coupled dynamics, including the JAX-based physical model, neural-network torque prediction, ODE integration, and physics-informed driving-force prediction - with the purpose of informing engineering decisions to produce the world's fastest spinning rotor.
 
