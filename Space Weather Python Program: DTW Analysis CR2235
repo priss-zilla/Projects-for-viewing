@@ -2,9 +2,7 @@
 continuous solar wind data against MAVEN's ##
 
 
-# ===========================================================
-# Dynamic Time Warping Functions - OPTIMIZED VERSION
-# ===========================================================
+# Dynamic Time Warping Functions - OPTIMIZED VERSION #
 
 def compute_dtw_cost(series1, series2, w=None, metric='euclidean'):
     """
@@ -31,7 +29,7 @@ def compute_dtw_cost(series1, series2, w=None, metric='euclidean'):
     DTW = np.full((n + 1, m + 1), np.inf)
     DTW[0, 0] = 0
 
-    # ========== REDUCED WINDOW SIZE ==========
+    #  REDUCED WINDOW SIZE #
     if w is None: #fallback window if no window exists
         max_hours_window = 12
         w = int(max_hours_window * 3600 / 600)
@@ -75,7 +73,7 @@ def get_warping_path(DTW):
 
     path.reverse()
 
-    # ========== PATH SIMPLIFICATION ==========
+    # PATH SIMPLIFICATION #
     simplified_path = []
     if len(path) > 0:
         simplified_path.append(path[0])
@@ -116,7 +114,7 @@ def plot_dtw_matrix(DTW, path=None, title="DTW Distance Matrix"):
             stride = len(path) // 50
             ax.scatter(path_x[::stride], path_y[::stride],
                        c='cyan', s=70, alpha=0.8,
-                       edgecolors='black', linewidth=1.0, zorder=5)  # ← Different color for scatter
+                       edgecolors='black', linewidth=1.0, zorder=5)  
 
 
     ax.set_xlabel('MAVEN Time Index', fontsize=21)
@@ -131,9 +129,8 @@ def plot_time_series_alignment_optimized(awsom_series, maven_series, path,
                                         awsom_times=None, maven_times=None,
                                         variable_name="Variable",
                                         max_connections=250):
-    # ===========================================================
-    # Variable units dictionary
-    # ===========================================================
+    
+    # Variable units dictionary #
     var_name = variable_name
     variable_units = {
         'Velocity': 'km/s',
@@ -164,7 +161,7 @@ def plot_time_series_alignment_optimized(awsom_series, maven_series, path,
     ax1.plot(x1, awsom_series, 'b-', linewidth=5.0, label='AWSoM Model', alpha=0.9)
     ax1.plot(x2, maven_series, 'r-', linewidth=5.0, label='MAVEN Filtered', alpha=0.9)
 
-    # ========== EQUAL TIME INTERVAL CONNECTIONS ==========
+    # EQUAL TIME INTERVAL CONNECTIONS #
     awsom_indices = np.array([p[0] for p in path])
     maven_indices = np.array([p[1] for p in path])
 
@@ -267,7 +264,7 @@ def plot_selective_connections(awsom_series, maven_series, path,
     ax1.plot(x1, awsom_series, 'b-', linewidth=5.0, label='AWSoM Model', alpha=0.9)
     ax1.plot(x2, maven_series, 'r-', linewidth=5.0, label='MAVEN Filtered', alpha=0.9)
 
-    # ========== EQUAL TIME INTERVAL SELECTION ==========
+    # EQUAL TIME INTERVAL SELECTION #
     awsom_indices = np.array([p[0] for p in path])
     maven_indices = np.array([p[1] for p in path])
 
@@ -305,9 +302,8 @@ def plot_selective_connections(awsom_series, maven_series, path,
             ax1.plot([maven_idx, awsom_idx],
                     [maven_series[maven_idx], awsom_series[awsom_idx]],
                     color='green', alpha=0.7, linewidth=2.5)
-    # ===========================================================
-    # Variable units dictionary
-    # ===========================================================
+    
+    # Variable units dictionary #
     var_name = variable_name
     variable_units = {
         'Velocity': 'km/s',
@@ -412,10 +408,7 @@ def dtw_statistics(awsom_series, maven_series, path, dt=1.0):
 
     return stats
 
-
-# ===========================================================
-# SSF and MSE SKILL SCORE CALCULATIONS
-# ===========================================================
+# SSF and MSE SKILL SCORE CALCULATIONS #
 def create_mean_reference(observed_series):
     """
     Create mean reference model (constant line at the mean value).
@@ -463,9 +456,7 @@ def calculate_ssf(observed, model, reference, fixed_window, metric='euclidean'):
     return ssf
 
 
-# ===========================================================
-# WINDOW OPTIMIZATION USING SECOND DERIVATIVE
-# ===========================================================
+# WINDOW OPTIMIZATION USING SECOND DERIVATIVE #
 
 # def find_optimal_window_second_derivative(awsom_norm, maven_norm, mean_ref,
 #                                           window_hours_range=(80, 240, 40),
@@ -826,9 +817,7 @@ def plot_reference_comparison(maven_original, awsom_original, times, variable_na
     plt.savefig(f'reference_comparison_{variable_name}.png', dpi=150, bbox_inches='tight')
     plt.show()
 
-# ===========================================================
-#    Overmapping Analysis (Counts MAVEN per AWSoM)
-# ===========================================================
+# Overmapping Analysis (Counts MAVEN per AWSoM) #
 
 # def plot_overmapping_corrected(path, ax, max_points=100, title="Overmapping Analysis"):
 #     """
@@ -918,9 +907,7 @@ def plot_reference_comparison(maven_original, awsom_original, times, variable_na
 
 #     return scatter
 
-# ===========================================================
-# Optimized Main DTW Analysis with metrics
-# ===========================================================
+# Optimized Main DTW Analysis with metrics #
 def analyze_awsom_maven_dtw(filtered_data, awsom_times, fixed_window, variable_names=None,
                                      max_connections=120):
     """
@@ -1000,9 +987,7 @@ def analyze_awsom_maven_dtw(filtered_data, awsom_times, fixed_window, variable_n
 
         print("\nGenerating optimized plots...")
 
-        # ===========================================================
         # Variable units dictionary
-        # ===========================================================
         variable_units = {
             'Velocity': 'km/s',
             'Density': 'cm$^{-3}$',
@@ -1118,7 +1103,7 @@ def analyze_awsom_maven_dtw(filtered_data, awsom_times, fixed_window, variable_n
         # plt.savefig(f'dtw_overmapping_{var_name}_w{optimal_window:.0f}h.png', dpi=150, bbox_inches='tight')
         # plt.show()
 
-        # # Plot 4: Overmapping analysis (CORRECTED)
+        # # Plot 4: Overmapping analysis 
         # fig4, axes4 = plt.subplots(1, 2, figsize=(14, 6))
 
         # # Left: Bar chart of MAVEN mappings per AWSoM point
@@ -1173,10 +1158,7 @@ def analyze_awsom_maven_dtw(filtered_data, awsom_times, fixed_window, variable_n
 
     return all_results
 
-
-# ===========================================================
-#    EXECUTION WITH EQUAL INTERVAL CONNECTIONS
-# ===========================================================
+# EXECUTION WITH EQUAL INTERVAL CONNECTIONS #
 three_day_window = int(72*3600 / dt)
 four_day_window = int(96*3600 / dt)
 print("Starting OPTIMIZED DTW analysis with EQUAL INTERVAL connections...")
