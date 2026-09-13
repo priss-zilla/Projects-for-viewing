@@ -1,3 +1,7 @@
+## This script contains the code snippets for the Dynamic Time Warping (DTW) Technique in validating AWSoM's 
+continuous solar wind data against MAVEN's ##
+
+
 # ===========================================================
 # Dynamic Time Warping Functions - OPTIMIZED VERSION
 # ===========================================================
@@ -720,10 +724,10 @@ def compute_all_metrics(awsom_norm, maven_norm, fixed_window, variable_name="Var
         print("AWSoM performs WORSE than mean model (DTW perspective)")
 
     if (mse_skill < 1 and ssf > 1) or (mse_skill > 1 and ssf < 1):
-        print(f"  • ⚠️  DISAGREEMENT detected: MSE={mse_skill:.3f} vs SSF={ssf:.3f}")
+        print(f" x  DISAGREEMENT detected: MSE={mse_skill:.3f} vs SSF={ssf:.3f}")
         print(f"    This indicates time-shift issues that DTW handles better than MSE")
     else:
-        print(f"  • ✓ AGREEMENT: Both metrics agree on model performance")
+        print(f" ✓ AGREEMENT: Both metrics agree on model performance")
 
     return {
         'variable_name': variable_name,
@@ -823,7 +827,7 @@ def plot_reference_comparison(maven_original, awsom_original, times, variable_na
     plt.show()
 
 # ===========================================================
-#    FIXED: Overmapping Analysis (Counts MAVEN per AWSoM)
+#    Overmapping Analysis (Counts MAVEN per AWSoM)
 # ===========================================================
 
 # def plot_overmapping_corrected(path, ax, max_points=100, title="Overmapping Analysis"):
@@ -915,7 +919,7 @@ def plot_reference_comparison(maven_original, awsom_original, times, variable_na
 #     return scatter
 
 # ===========================================================
-# OPTIMIZED Main DTW Analysis WITH METRICS
+# Optimized Main DTW Analysis with metrics
 # ===========================================================
 def analyze_awsom_maven_dtw(filtered_data, awsom_times, fixed_window, variable_names=None,
                                      max_connections=120):
@@ -1205,7 +1209,7 @@ print("\n" + "="*70)
 print("ANALYSIS COMPLETE - EQUAL INTERVAL CONNECTIONS")
 print("="*70)
 print("\nChanges applied:")
-print("  ✅ ALL connections now at EQUAL INTERVALS (not importance-based)")
+print("  ✅ ALL connections at equal intervals")
 print("  ✅ Selective plot: 120 equally spaced connections")
 print("  ✅ Clean plot: 250 equally spaced connections")
 print("  ✅ Consistent line thickness (2.0-2.5)")
