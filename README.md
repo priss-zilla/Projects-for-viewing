@@ -122,8 +122,8 @@ For the rotor, identifying the missing driving force could help explain the onse
 
 The approach therefore combines:
 
-`First-Principles Physics`
-→ `Numerical ODE Simulation`
+First-Principles Physics
+→ Numerical ODE Simulation`
 → `JAX High-Performance Computing`
 → `Neural Network`
 → `Physics-Informed Learning`
