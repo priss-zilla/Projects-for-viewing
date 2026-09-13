@@ -72,7 +72,7 @@ The methodology can be adapted for comparing any simulation model with observati
 
 This project investigates the use of **Physics-Informed Neural Networks (PINNs)** to identify missing dynamics in an ultra-fast levitating rotor system designed for hypersensitive environmental detection and high-precision rotational sensing.
 
-At high rotational speeds, the rotor exhibits pronounced wobbling and a decay in rotational velocity. Experimental observations identified three rigid-body vibration modes—**θ, X, and Z**—and indicated that resonance between rotational motion and these vibrational modes can produce significant energy transfer. The underlying hypothesis is that coupling between the rotational and vibrational dynamics generates an additional driving force that is not fully captured by the existing physical model.
+At high rotational speeds, the rotor exhibits pronounced wobbling and a decay in rotational velocity. Experimental observations identified three rigid-body vibration modes: **θ, X, and Z** , and indicated that resonance between rotational motion and these vibrational modes can produce significant energy transfer. The underlying hypothesis is that coupling between the rotational and vibrational dynamics generates an additional driving force that is not fully captured by the existing physical model.
 
 ## Physics-Informed Neural Network
 
